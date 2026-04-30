@@ -1,0 +1,27 @@
+# ==============================================================================
+# terraform.tfvars.example
+# Copy this file to terraform.tfvars and fill in your values.
+# NEVER commit terraform.tfvars (or any file containing real tokens) to Git.
+# Add it to .gitignore.
+# ==============================================================================
+
+# Required – set your DigitalOcean token here or export TF_VAR_do_token=<token>
+do_token = "your-digitalocean-personal-access-token"
+
+# Cluster identity
+cluster_name = "my-doks-cluster"
+region       = "nyc3"          # run: doctl kubernetes options regions
+k8s_version  = "1.30.4-do.0"  # run: doctl kubernetes options versions
+environment  = "dev"
+
+# Tags applied to every DigitalOcean resource for billing visibility
+tags = ["terraform-managed", "team:platform"]
+
+# Node pool droplet sizes (run `doctl compute size list` for options)
+node_pool_general_size   = "s-2vcpu-4gb"
+node_pool_secondary_size = "s-2vcpu-4gb"
+
+# NGINX Gateway Fabric
+nginx_gateway_namespace     = "nginx-gateway"
+nginx_gateway_chart_version = "1.3.0"
+gateway_api_crd_version     = "v1.1.0"
